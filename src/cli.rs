@@ -1530,7 +1530,7 @@ mod tests {
                 include_str!("../tests/completions/workrus.ps1"),
             ),
         ] {
-            assert_eq!(completion_script(shell), expected);
+            assert_eq!(completion_script(shell), expected.replace("\r\n", "\n"));
         }
         assert!(matches!(
             parse(["completion", "bash"]),

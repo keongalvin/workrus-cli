@@ -1278,11 +1278,12 @@ fn prompt_create(m: &mut Mutation, json_output: bool) -> Result<(), AppError> {
         match settings.issue_create_assign_self {
             Some(config::AssignSelf::Always) => m.assignee_self = true,
             Some(config::AssignSelf::Auto)
-                if io::stdin().is_terminal() && io::stderr().is_terminal() && !json_output =>
+                if io::stdin().is_terminal()
+                    && io::stderr().is_terminal()
+                    && !json_output
+                    && prompt("Assign to yourself? [Y/n]", false)?.is_empty() =>
             {
-                if prompt("Assign to yourself? [Y/n]", false)?.is_empty() {
-                    m.assignee_self = true;
-                }
+                m.assignee_self = true;
             }
             _ => {}
         }

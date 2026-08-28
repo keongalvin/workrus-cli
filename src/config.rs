@@ -399,6 +399,7 @@ fn validate_workspace(workspace: &str) -> Result<(), AppError> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[cfg(not(windows))]
     #[test]
     fn global_path_uses_xdg_then_home_without_repository_fallback() {
         let values = HashMap::from([
@@ -416,6 +417,22 @@ mod tests {
         );
         assert!(global_config_path_from(&HashMap::new()).is_err());
     }
+
+    #[cfg(windows)]
+    #[test]
+    fn global_path_uses_appdata() {
+        let values = HashMap::from([(
+            String::from("APPDATA"),
+            String::from(r"C:\Users\alvin\AppData\Roaming"),
+        )]);
+
+        assert_eq!(
+            global_config_path_from(&values).unwrap(),
+            PathBuf::from(r"C:\Users\alvin\AppData\Roaming\linear\linear.toml")
+        );
+        assert!(global_config_path_from(&HashMap::new()).is_err());
+    }
+
     #[test]
     fn environment_overrides_toml_and_validates_supported_values() {
         let file = ConfigFile {
