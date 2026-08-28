@@ -5,13 +5,13 @@ edition = "2024"
 rust-version = "1.93"
 description = "A low-dependency CLI for Linear workflows"
 readme = "README.md"
-license = "MIT"
+license = "MIT OR Apache-2.0"
 authors = ["Alvin Yip"]
 keywords = ["linear", "cli", "issues"]
 categories = ["command-line-utilities"]
 repository = "https://github.com/keongalvin/workrus-cli"
 publish = ["crates-io"]
-include = ["src/**", "tests/**", "Cargo.toml", "Cargo.lock", "README.md", "CHANGELOG.md", "LICENSE"]
+include = ["src/**", "tests/**", "Cargo.toml", "Cargo.lock", "README.md", "CHANGELOG.md", "LICENSE-MIT", "LICENSE-APACHE"]
 
 [dependencies]
 serde = { version = "1", features = ["derive"] }

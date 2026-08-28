@@ -6,6 +6,7 @@
 - Added deterministic plain-text completion scripts for bash, zsh, fish, and PowerShell through `completion` (with `completions` alias).
 - Documented global-only configuration, stable JSON envelopes, and deliberate exclusions including deferred generic private attachments and all image-specific behavior.
 - Validated read operations against a live Linear schema and corrected issue sorting/search, project team filters, and query-complexity-safe project/document page sizes.
+- Dual-licensed the project under Apache-2.0 or MIT.
 
 ## 0.1.0 - 2026-08-28
 

@@ -73,6 +73,6 @@ Git is fixed: there is no `jj`, VCS configuration, commit discovery, keyring, pa
 
 ## License
 
-MIT, Copyright Alvin Yip. See [LICENSE](LICENSE).
+Dual-licensed under either [Apache License 2.0](LICENSE-APACHE) or [MIT](LICENSE-MIT), at your option. Copyright Alvin Yip.
 
 Global configuration writes use same-directory atomic replacement on Unix and Windows. Configuration and document content reads reject final-component symlinks or Windows reparse points and enforce their size bounds on the opened handle.
