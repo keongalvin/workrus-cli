@@ -10,7 +10,6 @@ authors = ["Alvin Yip"]
 keywords = ["linear", "cli", "issues"]
 categories = ["command-line-utilities"]
 repository = "https://github.com/keongalvin/workrus-cli"
-publish = ["crates-io"]
 include = ["src/**", "tests/**", "Cargo.toml", "Cargo.lock", "README.md", "CHANGELOG.md", "LICENSE-MIT", "LICENSE-APACHE"]
 
 [dependencies]

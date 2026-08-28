@@ -61,6 +61,8 @@ Source the deterministic generated script for your shell, for example `source <(
 
 `--limit 0` fetches cursor pages until exhaustion; positive limits cap aggregate results. Browser URLs must be HTTPS. `--web` uses the platform launcher; `--app` targets the Linear desktop app only on macOS and is rejected elsewhere. `issue pr` uses `gh pr create` without a shell and prints only its validated HTTPS result URL. Git, `gh`, and launchers have `LINEAR_API_KEY` and Git-routing variables removed; Git branch switching disables repository hooks.
 
+Global configuration writes use same-directory atomic replacement on Unix and Windows. Configuration and document content reads reject final-component symlinks or Windows reparse points and enforce their size bounds on the opened handle.
+
 `issue start` is Git-first: it creates or switches to Linear's branch before moving the issue to its unique `started` state. It re-reads the issue after the Git change and reports a retryable partial result if Linear work then fails. It never resets, deletes, pushes, or fetches.
 
 Create prompts run only with a human TTY and never contaminate JSON stdout. Destructive issue, comment, milestone, and document operations require exact `--confirm`; `--dry-run` validates and resolves without mutation. Issue deletion archives, and document deletion trashes, rather than permanently deleting. Project and milestone names resolve exactly and ambiguity reports candidate IDs. Project `--priority` and `--label` are rejected because their public create-input fields are not confirmed.
@@ -74,5 +76,3 @@ Git is fixed: there is no `jj`, VCS configuration, commit discovery, keyring, pa
 ## License
 
 Dual-licensed under either [Apache License 2.0](LICENSE-APACHE) or [MIT](LICENSE-MIT), at your option. Copyright Alvin Yip.
-
-Global configuration writes use same-directory atomic replacement on Unix and Windows. Configuration and document content reads reject final-component symlinks or Windows reparse points and enforce their size bounds on the opened handle.
