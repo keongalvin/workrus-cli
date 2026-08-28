@@ -1,0 +1,5 @@
+/target/
+.workrus/
+.env
+.envrc
+.DS_Store

@@ -1,0 +1,19 @@
+#compdef workrus
+
+_workrus() {
+  local -a commands
+  commands=(config team user project milestone m document docs issue completion completions)
+  if (( CURRENT == 2 )); then
+    _describe -t commands 'workrus command' commands
+  else
+    case $words[2] in
+      team) _values 'team command' list id members create autolinks ;;
+      project) _values 'project command' list view create ;;
+      milestone|m) _values 'milestone command' list view create update delete ;;
+      document|docs) _values 'document command' list view create update delete ;;
+      issue)
+        if [[ $words[3] == comment ]]; then _values 'comment command' list add update delete; else _values 'issue command' mine list l query view pr pull-request id title url create update delete comment start; fi ;;
+    esac
+  fi
+}
+_workrus "$@"
